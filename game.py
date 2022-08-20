@@ -13,7 +13,7 @@ def player_input():
         marker = input("Player 1: Do you want to be x or o?: ").lower()
 
         if marker not in ["x", "o"]:
-            print("Sorry, please choose x or o.")
+            print("Invalid input. Please choose x or o.")
 
     if marker == "x":
         print("Player 1 is x and Player 2 is o.")
@@ -65,7 +65,6 @@ def replay():
 
     while play_again not in ["y", "n"]:
         play_again = input("Do you still want to play? Enter y or n: ").lower()
-
         if play_again not in ["y", "n"]:
             print("Invalid input. Please enter y or n.")
     if play_again == "y":
@@ -76,7 +75,7 @@ def replay():
 print("Welcome to Tic Tac Toe")
 
 while True:
-    #sets up an empty tic tac toe board
+    #sets up the tic tac toe board
     game_board = [" "] * 9
 
     #assign x and o to p1 and p2

@@ -112,6 +112,7 @@ while True:
                 game_on = False
                 break
             else:
+                #check if the board is full without a clear winner
                 if full_board_check(game_board):
                     display_board(game_board)
                     print("The game is a draw!")
@@ -130,6 +131,7 @@ while True:
                 game_on = False
                 break
             else:
+                #check if the board is full without a clear winner
                 if full_board_check(game_board):
                     display_board(game_board)
                     print("The game is a draw!")

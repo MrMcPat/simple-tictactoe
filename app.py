@@ -22,13 +22,11 @@
 game_list = [0,1,2]
 
 def display_game(game_list):
-    print("Here is the current list")
+    print("Here is the current list: ")
     print(game_list)
 
-display_game(game_list)
-
 def position_choice():
-    choice = ""
+    choice = "Wrong."
 
     while choice not in ["0", "1", "2"]:
         choice = input("Pick a position to replace (0,1,2): ")
@@ -36,6 +34,8 @@ def position_choice():
         if choice not in ["0", "1", "2"]:
             # clear_output()
             print("Sorry, but you did not choose a valid position (0,1,2)")
+        
+    return int(choice)
 
 def replacement_choice(game_list, position):
     user_placement = input("Type a string to place at the position: ")
@@ -43,11 +43,26 @@ def replacement_choice(game_list, position):
     return game_list
 
 def gameon_choice():
-    choice = ""
+    choice = "Wrong."
 
     while choice not in ["y", "n"]:
-        choice = input("Would you like to keep playing? y or n")
+        choice = input("Would you like to keep playing? (y or n): ")
 
         if choice.lower() not in ["y", "n"]:
             # clear_output()
             print("Sorry, I didn't understand. Please make sure to choose y or n.")
+
+        if choice.lower() == "y":
+            return True
+        else:
+            return False
+
+game_on = True
+game_list = [0,1,2]
+
+while game_on:
+    display_game(game_list)
+    position = position_choice()
+    game_list = replacement_choice(game_list, position)
+    display_game(game_list)
+    game_on = gameon_choice()

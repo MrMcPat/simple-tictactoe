@@ -35,7 +35,7 @@ def win_check(board, mark):
     (board[6] == mark and board[4] == mark and board[2] == mark) or # diagonal
     (board[8] == mark and board[4] == mark and board[0] == mark)) # diagonal
 
-def choose_first():
+def who_goes_first():
     if random.randint(0,1) == 0:
         return "Player 2"
     else:
@@ -82,7 +82,7 @@ while True:
     p1_marker, p2_marker = player_input()
 
     #randomly chooses who goes first
-    turn = choose_first()
+    turn = who_goes_first()
     print(f"{turn} will go first.")
 
     #check if player is ready
@@ -112,7 +112,12 @@ while True:
                 game_on = False
                 break
             else:
-                turn = "Player 2"
+                if full_board_check(game_board):
+                    display_board(game_board)
+                    print("The game is a draw!")
+                    break
+                else:
+                    turn = "Player 2"
         else:
             #p2's turn
             display_board(game_board)
@@ -125,7 +130,12 @@ while True:
                 game_on = False
                 break
             else:
-                turn = "Player 1"
+                if full_board_check(game_board):
+                    display_board(game_board)
+                    print("The game is a draw!")
+                    break
+                else:
+                    turn = "Player 1"
 
     #if players choose not play again, the script stops
     if not replay():
